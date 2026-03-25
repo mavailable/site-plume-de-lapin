@@ -3,35 +3,40 @@ import Button from '@/components/ui/Button.astro';
 import { getServices } from '@/data/content';
 
 const services = getServices();
+const badges = ['Œufs', 'Volailles', 'Lapin'];
+const bgColors = ['bg-primary-50 border-primary-100', 'bg-accent-50 border-accent-100', 'bg-secondary-50 border-secondary-100'];
 ---
 
-<section id="produits" class="py-20 sm:py-28 bg-neutral-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <p class="text-accent-600 text-xs uppercase tracking-[0.2em] font-semibold mb-3">Nos produits</p>
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary-950 max-w-xl">
-      Du pré à votre table
+<section id="produits" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 text-center">
+      Des produits fermiers, du pré à votre table
     </h2>
+    <p class="mt-4 text-neutral-600 text-center max-w-2xl mx-auto">
+      Élevés en plein air, nos animaux grandissent à leur rythme sur notre exploitation familiale.
+    </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-14 border border-neutral-200">
+    <div class="mt-14 space-y-6 max-w-3xl mx-auto">
       {services.map((service, i) => (
-        <article class={`p-8 sm:p-10 ${i < 2 ? 'md:border-r border-neutral-200' : ''} ${i > 0 ? 'border-t md:border-t-0 border-neutral-200' : ''} group hover:bg-primary-950 transition-colors duration-300`}>
-          <span class="text-6xl font-heading font-bold text-neutral-200 group-hover:text-primary-800 transition-colors">
-            0{i + 1}
-          </span>
-          <h3 class="mt-4 font-heading font-bold text-xl text-neutral-900 group-hover:text-white transition-colors">
-            {service.title}
-          </h3>
-          <p class="mt-3 text-neutral-600 text-sm leading-relaxed group-hover:text-white/80 transition-colors">
-            {service.description}
-          </p>
-          <a href="/boutique" class="mt-6 inline-block text-sm font-semibold text-primary-700 group-hover:text-accent-400 uppercase tracking-wider transition-colors">
-            Voir les produits &rarr;
-          </a>
+        <article class={`${bgColors[i % 3]} border rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start group hover:shadow-md transition-shadow`}>
+          <!-- Badge coin -->
+          <div class="flex-shrink-0">
+            <span class="inline-block bg-white text-primary-700 text-xs font-bold px-3 py-1.5 rounded-full border border-primary-200 shadow-sm">
+              {badges[i]}
+            </span>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-heading font-bold text-lg text-neutral-900">{service.title}</h3>
+            <p class="mt-2 text-neutral-600 text-sm leading-relaxed">{service.description}</p>
+            <a href="/boutique" class="mt-3 inline-block text-sm font-semibold text-primary-600 hover:text-primary-700">
+              Voir les produits →
+            </a>
+          </div>
         </article>
       ))}
     </div>
 
-    <div class="mt-12">
+    <div class="text-center mt-12">
       <Button href="/boutique" variant="primary" size="lg">
         Découvrir la boutique
       </Button>

@@ -8,34 +8,32 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Navigation principale">
-    <a href="/" class="font-heading font-bold text-white text-lg tracking-wide uppercase">
-      Plume de Lapin
+<header class="sticky top-0 z-40 bg-secondary-50/95 backdrop-blur-md border-b border-secondary-200">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Navigation principale">
+    <a href="/" class="flex items-center gap-3 font-heading font-bold text-primary-900 text-lg">
+      <!-- TODO: Remplacer par le vrai logo SVG -->
+      <div class="w-10 h-10 bg-white rounded-full border-2 border-primary-200 flex items-center justify-center shadow-sm">
+        <span class="text-primary-700 text-xs font-bold">PL</span>
+      </div>
+      <span class="hidden sm:inline">Plume de Lapin</span>
     </a>
 
     <ul class="hidden md:flex items-center gap-8">
       {navLinks.map(link => (
         <li>
-          <a href={link.href} class="text-white/80 hover:text-accent-400 transition-colors text-sm uppercase tracking-wider font-medium">
+          <a href={link.href} class="text-neutral-700 hover:text-primary-700 transition-colors text-sm font-medium">
             {link.label}
           </a>
         </li>
       ))}
     </ul>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
       <CartIcon client:load />
-      <a href="/boutique" class="hidden md:inline-flex bg-accent-500 text-secondary-950 font-bold text-xs uppercase tracking-wider py-2.5 px-5 hover:bg-accent-400 transition-colors min-h-[44px] items-center">
+      <a href="/boutique" class="hidden md:inline-flex bg-primary-700 text-white font-semibold text-sm py-2.5 px-6 rounded-lg hover:bg-primary-800 shadow-sm transition-all min-h-[44px] items-center">
         Commander
       </a>
-      <button
-        id="menu-toggle"
-        class="md:hidden p-2 text-white hover:text-accent-400 min-w-[44px] min-h-[44px] flex items-center justify-center"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
+      <button id="menu-toggle" class="md:hidden p-2 text-neutral-700 hover:text-primary-700 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -43,17 +41,17 @@ const navLinks = [
     </div>
   </nav>
 
-  <div id="mobile-menu" class="md:hidden hidden bg-primary-950 border-t border-primary-800" role="dialog" aria-label="Menu de navigation">
+  <div id="mobile-menu" class="md:hidden hidden bg-secondary-50 border-t border-secondary-200" role="dialog" aria-label="Menu de navigation">
     <ul class="px-4 py-4 space-y-1">
       {navLinks.map(link => (
         <li>
-          <a href={link.href} class="block py-3 px-3 text-white/80 hover:text-accent-400 hover:bg-primary-900 transition-colors font-medium uppercase tracking-wider text-sm">
+          <a href={link.href} class="block py-3 px-4 text-neutral-700 hover:text-primary-700 hover:bg-white rounded-lg transition-colors font-medium">
             {link.label}
           </a>
         </li>
       ))}
-      <li class="pt-3">
-        <a href="/boutique" class="block text-center bg-accent-500 text-secondary-950 font-bold py-3 px-4 uppercase tracking-wider text-sm hover:bg-accent-400 transition-colors">
+      <li class="pt-2">
+        <a href="/boutique" class="block text-center bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg hover:bg-primary-800 shadow-sm transition-all">
           Commander
         </a>
       </li>
@@ -76,7 +74,6 @@ const navLinks = [
     if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
       menu?.classList.add('hidden');
       toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.setAttribute('aria-label', 'Ouvrir le menu');
       if (icon) icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
       toggle?.focus();
     }
