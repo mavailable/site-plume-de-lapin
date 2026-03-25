@@ -1,7 +1,7 @@
 {
   "title": "Lapin",
-  "shortDesc": "Lapin fermier élevé en clapiers, entier, demi ou en découpe",
-  "description": "Nos lapins sont élevés en clapiers avec soin, dans des conditions respectueuses. Disponibles entiers, en demi ou en découpe (râble). Une viande maigre et savoureuse, idéale pour les plats mijotés et les grillades.",
+  "shortDesc": "Lapin fermier élevé en clapiers, vendu entier",
+  "description": "Nos lapins sont élevés en clapiers avec soin, dans des conditions respectueuses. Disponibles entiers. Une viande maigre et savoureuse, idéale pour les plats mijotés et les grillades.",
   "image": "/images/lapin.jpg",
   "order": 3
 }

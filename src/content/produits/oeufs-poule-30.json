@@ -1,0 +1,9 @@
+{
+  "nom": "Plateau de 30 œufs de poule fermiers",
+  "photo": "/images/produits/oeufs-poule.jpg",
+  "prix": 8,
+  "categorie": "oeufs",
+  "description": "Œufs de poules élevées dans nos poulaillers spacieux et nourries aux céréales de la ferme. Plateau de 30, idéal pour les familles.",
+  "disponible": true,
+  "ordre": 3
+}

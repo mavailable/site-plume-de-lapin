@@ -1,7 +1,7 @@
 {
   "nom": "Lapin entier (~1,5 kg)",
   "photo": "/images/produits/lapin.jpg",
-  "prix": 13,
+  "prix": 15,
   "categorie": "lapin",
   "description": "Lapin fermier élevé en clapiers avec soin sur notre ferme. Viande maigre et savoureuse. Prix au kg.",
   "disponible": false,

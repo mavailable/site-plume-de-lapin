@@ -1,9 +1,9 @@
 {
   "nom": "Boîte de 12 œufs de caille",
   "photo": "/images/produits/oeufs-caille.jpg",
-  "prix": 3.5,
+  "prix": 2,
   "categorie": "oeufs",
   "description": "Œufs de cailles élevées sur notre ferme. Délicats et savoureux, parfaits en entrée.",
   "disponible": true,
-  "ordre": 3
+  "ordre": 4
 }

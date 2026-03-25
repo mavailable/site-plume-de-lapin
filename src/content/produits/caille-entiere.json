@@ -1,0 +1,9 @@
+{
+  "nom": "Caille entière",
+  "photo": "/images/produits/caille.jpg",
+  "prix": 30,
+  "categorie": "volailles",
+  "description": "Cailles fermières élevées sur notre ferme. Viande délicate, parfaite rôtie ou grillée. Prix au kg.",
+  "disponible": false,
+  "ordre": 8
+}

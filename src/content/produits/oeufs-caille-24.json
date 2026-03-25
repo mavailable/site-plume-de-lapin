@@ -1,9 +1,0 @@
-{
-  "nom": "Boîte de 24 œufs de caille",
-  "photo": "/images/produits/oeufs-caille.jpg",
-  "prix": 6,
-  "categorie": "oeufs",
-  "description": "Œufs de cailles élevées sur notre ferme. Format familial, idéal pour cuisiner.",
-  "disponible": true,
-  "ordre": 4
-}
