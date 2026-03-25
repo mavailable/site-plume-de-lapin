@@ -129,14 +129,26 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       'Content-Type': 'application/json',
     };
 
-    const [vendorRes, customerRes] = await Promise.all([
-      fetch(resendUrl, { method: 'POST', headers: resendHeaders, body: JSON.stringify(vendorEmail) }),
-      fetch(resendUrl, { method: 'POST', headers: resendHeaders, body: JSON.stringify(customerEmail) }),
-    ]);
+    // Envoi email vendeur (toujours)
+    const vendorRes = await fetch(resendUrl, {
+      method: 'POST', headers: resendHeaders, body: JSON.stringify(vendorEmail)
+    });
 
-    if (!vendorRes.ok || !customerRes.ok) {
-      console.error('Resend error:', await vendorRes.text(), await customerRes.text());
-      return new Response(JSON.stringify({ error: 'Erreur envoi email' }), { status: 500, headers });
+    if (!vendorRes.ok) {
+      const errText = await vendorRes.text();
+      return new Response(JSON.stringify({ error: 'Erreur email vendeur', detail: errText }), { status: 500, headers });
+    }
+
+    // Envoi email acheteur (peut échouer en free tier — non bloquant)
+    try {
+      const customerRes = await fetch(resendUrl, {
+        method: 'POST', headers: resendHeaders, body: JSON.stringify(customerEmail)
+      });
+      if (!customerRes.ok) {
+        console.error('Email client non envoyé (free tier):', await customerRes.text());
+      }
+    } catch {
+      console.error('Email client failed — free tier limitation');
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200, headers });
