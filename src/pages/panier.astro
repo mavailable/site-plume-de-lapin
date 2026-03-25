@@ -29,7 +29,7 @@ import OrderForm from '@/components/boutique/OrderForm';
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
         <!-- Panier (3/5) -->
         <div class="lg:col-span-3">
-          <CartDrawer client:load />
+          <CartDrawer client:only="react" />
         </div>
 
         <!-- Sidebar résumé + formulaire (2/5) -->
@@ -43,7 +43,7 @@ import OrderForm from '@/components/boutique/OrderForm';
             </div>
 
             <!-- Formulaire -->
-            <OrderForm client:load />
+            <OrderForm client:only="react" />
           </div>
         </div>
       </div>

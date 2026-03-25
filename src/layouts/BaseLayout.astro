@@ -80,7 +80,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <slot name="footer" />
 
     <!-- Mini-panier slide-in (toutes les pages) -->
-    <CartSlider client:load />
+    <CartSlider client:only="react" />
 
     <!-- Conversion tracking (Umami events) -->
     <script>
