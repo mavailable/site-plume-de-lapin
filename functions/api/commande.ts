@@ -73,7 +73,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     // Email vendeur
     const vendorEmail = {
-      from: `Commandes <commandes@plumedelapin.fr>`,
+      from: 'Plume de Lapin <onboarding@resend.dev>',
       to: [env.VENDOR_EMAIL],
       reply_to: client.email,
       subject: `Nouvelle réservation de ${client.nom}`,
@@ -94,7 +94,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     // Email acheteur
     const customerEmail = {
-      from: `${env.VENDOR_NAME} <commandes@plumedelapin.fr>`,
+      from: 'Plume de Lapin <onboarding@resend.dev>',
       to: [client.email],
       reply_to: env.VENDOR_EMAIL,
       subject: `Confirmation de votre réservation — ${env.VENDOR_NAME}`,
