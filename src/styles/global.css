@@ -97,13 +97,13 @@
   --font-heading: 'Bitter', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
 
-  /* Rayons de bordure — Rustique & Brut : coins carrés */
-  --radius-sm: 0px;
-  --radius-DEFAULT: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
+  /* Rayons de bordure — Frais & Aéré : très arrondis */
+  --radius-sm: 0.5rem;
+  --radius-DEFAULT: 0.75rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
   --radius-full: 9999px;
 }
 

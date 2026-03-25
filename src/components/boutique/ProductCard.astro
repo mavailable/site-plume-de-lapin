@@ -16,34 +16,30 @@ const { slug, nom, photo, prix, categorie, description, disponible } = Astro.pro
 const unitLabel = ['volailles', 'lapin'].includes(categorie) ? '€/kg' : '€';
 ---
 
-<article class={`bg-white border border-neutral-200 group hover:border-primary-900 transition-colors ${!disponible ? 'opacity-60' : ''}`}>
+<article class={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group ${!disponible ? 'opacity-60' : ''}`}>
   <a href={`/boutique/${slug}`} class="block">
     <div class="aspect-[4/3] bg-neutral-100 relative overflow-hidden">
-      <!-- TODO: Remplacer par vraie photo -->
       <div class="w-full h-full flex items-center justify-center text-neutral-300">
         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       </div>
-      <div class="absolute top-0 left-0">
-        <span class={`inline-block text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 ${disponible ? 'bg-primary-900 text-white' : 'bg-neutral-200 text-neutral-500'}`}>
+      <div class="absolute top-3 left-3">
+        <Badge variant={disponible ? 'available' : 'unavailable'}>
           {disponible ? 'Disponible' : 'Indisponible'}
-        </span>
+        </Badge>
       </div>
     </div>
   </a>
 
   <div class="p-5">
-    <a href={`/boutique/${slug}`} class="block">
-      <h3 class="font-heading font-bold text-neutral-900 group-hover:text-primary-800 transition-colors">
-        {nom}
-      </h3>
+    <a href={`/boutique/${slug}`}>
+      <h3 class="font-heading font-bold text-neutral-900 group-hover:text-primary-600 transition-colors">{nom}</h3>
       <p class="mt-1 text-sm text-neutral-500 line-clamp-2">{description}</p>
     </a>
-
     <div class="mt-4 flex items-center justify-between">
       <p class="font-heading font-bold text-xl text-accent-800">
-        {prix.toFixed(2)} <span class="text-xs font-normal text-neutral-400 uppercase">{unitLabel}</span>
+        {prix.toFixed(2)} <span class="text-xs font-normal text-neutral-400">{unitLabel}</span>
       </p>
       {disponible && (
         <AddToCartButton client:visible slug={slug} nom={nom} prix={prix} photo={photo} />

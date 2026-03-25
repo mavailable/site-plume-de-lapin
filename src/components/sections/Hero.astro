@@ -5,35 +5,27 @@ import { getHero } from '@/data/content';
 const hero = getHero();
 ---
 
-<section id="hero" class="relative bg-primary-950 min-h-[85vh] flex items-center">
-  <!-- TODO: Remplacer par photo de la ferme en fond avec overlay -->
-  <div class="absolute inset-0 bg-[linear-gradient(135deg,#0e2012_0%,#1b3a20_40%,#204626_100%)]"></div>
-
-  <!-- Ligne décorative verticale -->
-  <div class="absolute left-8 sm:left-16 top-0 bottom-0 w-px bg-white/10"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-32 lg:py-40 w-full">
-    <div class="max-w-3xl pl-6 sm:pl-12 border-l-4 border-accent-500">
-      <p class="text-accent-400 text-sm uppercase tracking-[0.2em] font-semibold mb-6">
-        Ferme familiale — Lantefontaine (54)
-      </p>
-      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold text-white leading-[1.1]">
-        {hero.title}
-      </h1>
-      <p class="mt-8 text-xl sm:text-2xl text-white/90 leading-relaxed max-w-2xl">
-        {hero.subtitle}
-      </p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <Button href={hero.ctaLink} variant="primary" size="lg">
-          {hero.ctaText}
-        </Button>
-        <Button href={hero.ctaSecondaryLink} variant="ghost" size="lg" class="text-white/80 hover:text-white decoration-white/40">
-          {hero.ctaSecondaryText}
-        </Button>
-      </div>
-      <p class="mt-6 text-sm text-white/90">
-        {hero.reassurance}
-      </p>
+<section id="hero" class="bg-gradient-to-b from-primary-50 to-white py-20 sm:py-28 lg:py-36">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+    <span class="inline-block bg-primary-100 text-primary-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+      Ferme familiale — Lantefontaine (54)
+    </span>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-primary-900 leading-tight max-w-4xl mx-auto">
+      {hero.title}
+    </h1>
+    <p class="mt-6 text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-2xl mx-auto">
+      {hero.subtitle}
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <Button href={hero.ctaLink} variant="primary" size="lg">
+        {hero.ctaText}
+      </Button>
+      <Button href={hero.ctaSecondaryLink} variant="outline" size="lg">
+        {hero.ctaSecondaryText}
+      </Button>
     </div>
+    <p class="mt-5 text-sm text-neutral-500">
+      {hero.reassurance}
+    </p>
   </div>
 </section>
