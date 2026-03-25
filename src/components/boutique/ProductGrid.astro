@@ -1,0 +1,34 @@
+---
+import ProductCard from './ProductCard.astro';
+import CategoryFilter from './CategoryFilter';
+import { getProducts } from '@/data/content';
+
+const products = getProducts();
+
+const categories = [
+  { label: 'Tous les produits', value: 'all' },
+  { label: 'Œufs fermiers', value: 'oeufs' },
+  { label: 'Volailles entières', value: 'volailles' },
+  { label: 'Lapin', value: 'lapin' },
+];
+---
+
+<div>
+  <CategoryFilter client:load categories={categories} />
+
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    {products.map((product) => (
+      <div data-category={product.categorie}>
+        <ProductCard
+          slug={product.slug}
+          nom={product.nom}
+          photo={product.photo}
+          prix={product.prix}
+          categorie={product.categorie}
+          description={product.description}
+          disponible={product.disponible}
+        />
+      </div>
+    ))}
+  </div>
+</div>

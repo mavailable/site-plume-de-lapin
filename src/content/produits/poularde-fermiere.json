@@ -1,0 +1,9 @@
+{
+  "nom": "Poularde fermière (~2,5 kg)",
+  "photo": "/images/produits/poularde.jpg",
+  "prix": 15,
+  "categorie": "volailles",
+  "description": "Poularde fermière élevée en plein air. Idéale pour les repas de fête. Prix au kg.",
+  "disponible": false,
+  "ordre": 6
+}

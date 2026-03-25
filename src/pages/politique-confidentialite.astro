@@ -1,0 +1,138 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Politique de confidentialité — Plume de Lapin"
+  description="Politique de confidentialité et traitement des données personnelles du site Plume de Lapin."
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16 max-w-3xl mx-auto px-4 sm:px-6">
+    <h1 class="text-3xl font-heading font-bold text-primary-950 mb-10">Politique de confidentialité</h1>
+
+    <div class="space-y-10 text-neutral-700 leading-relaxed text-sm">
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">1. Responsable du traitement</h2>
+        <p>Le responsable du traitement des données collectées sur le site plumedelapin.fr est :</p>
+        <ul class="mt-3 space-y-1 list-none">
+          <li><strong>Plume de Lapin</strong> — Sandra et Gaylord</li>
+          <li>6 rue du château, 54150 Lantefontaine, France</li>
+          <li>Email : contact@plumedelapin.fr</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">2. Données collectées</h2>
+        <p>Nous collectons les données personnelles suivantes, uniquement lorsque vous les fournissez volontairement :</p>
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Via le formulaire de contact :</h3>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>Nom</li>
+          <li>Adresse email</li>
+          <li>Numéro de téléphone (optionnel)</li>
+          <li>Message</li>
+        </ul>
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Via le formulaire de commande (boutique) :</h3>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>Nom</li>
+          <li>Adresse email</li>
+          <li>Numéro de téléphone</li>
+          <li>Détail de la commande</li>
+          <li>Message (optionnel)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">3. Finalité du traitement</h2>
+        <p>Vos données sont collectées pour les finalités suivantes :</p>
+        <ul class="list-disc list-inside space-y-1 ml-2 mt-2">
+          <li>Répondre à vos demandes de contact</li>
+          <li>Traiter vos réservations de produits (boutique en ligne)</li>
+          <li>Vous envoyer un email de confirmation de commande</li>
+        </ul>
+        <p class="mt-3">Vos données ne sont <strong>jamais utilisées à des fins commerciales ou publicitaires</strong> et ne sont <strong>jamais partagées avec des tiers</strong>, à l'exception des services techniques nécessaires au fonctionnement du site (voir section 7).</p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">4. Base légale</h2>
+        <p>
+          Le traitement de vos données repose sur votre <strong>consentement</strong>, matérialisé par la soumission volontaire du formulaire de contact ou de commande (article 6.1.a du RGPD).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">5. Durée de conservation</h2>
+        <p>
+          Vos données personnelles sont conservées pendant une durée maximale de <strong>3 ans</strong> à compter de votre dernier contact, sauf obligation légale contraire. Au-delà de cette durée, elles sont supprimées.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">6. Vos droits</h2>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+        <ul class="list-disc list-inside space-y-1 ml-2 mt-2">
+          <li><strong>Droit d'accès</strong> : obtenir une copie de vos données personnelles</li>
+          <li><strong>Droit de rectification</strong> : corriger des données inexactes</li>
+          <li><strong>Droit de suppression</strong> : demander l'effacement de vos données</li>
+          <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+          <li><strong>Droit d'opposition</strong> : vous opposer au traitement de vos données</li>
+          <li><strong>Droit de limitation</strong> : demander la limitation du traitement</li>
+        </ul>
+        <p class="mt-3">
+          Pour exercer vos droits, contactez-nous à : <a href="mailto:contact@plumedelapin.fr" class="text-primary-700 hover:underline font-medium">contact@plumedelapin.fr</a>
+        </p>
+        <p class="mt-2">
+          Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-primary-700 hover:underline">CNIL</a> (Commission Nationale de l'Informatique et des Libertés).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">7. Services tiers</h2>
+
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Web3Forms (formulaire de contact)</h3>
+        <p>
+          Le formulaire de contact utilise le service Web3Forms pour l'envoi des messages. Vos données (nom, email, message) transitent par les serveurs de Web3Forms.
+          <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary-700 hover:underline">Politique de confidentialité de Web3Forms</a>.
+        </p>
+
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Resend (emails de commande)</h3>
+        <p>
+          Les emails de confirmation de commande sont envoyés via Resend. Vos données (nom, email, détail de commande) transitent par les serveurs de Resend.
+          <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-primary-700 hover:underline">Politique de confidentialité de Resend</a>.
+        </p>
+
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Umami Analytics</h3>
+        <p>
+          Ce site utilise Umami Analytics pour mesurer l'audience. Umami est une solution d'analyse respectueuse de la vie privée qui <strong>ne dépose aucun cookie</strong>, ne collecte aucune donnée personnelle, et ne suit pas les visiteurs entre les sites. Aucune bannière de consentement n'est nécessaire pour ce service.
+        </p>
+
+        <h3 class="font-semibold text-neutral-900 mt-4 mb-2">Cloudflare (hébergement)</h3>
+        <p>
+          Le site est hébergé sur Cloudflare Pages. Cloudflare peut collecter des données techniques (adresse IP, en-têtes HTTP) pour assurer la sécurité et la performance du site.
+          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-primary-700 hover:underline">Politique de confidentialité de Cloudflare</a>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">8. Cookies</h2>
+        <p>
+          Ce site <strong>n'utilise aucun cookie</strong> de tracking, de publicité ou d'analyse. Le seul stockage local utilisé est le <strong>localStorage</strong> de votre navigateur pour mémoriser le contenu de votre panier (boutique). Ces données restent sur votre appareil et ne sont jamais transmises à nos serveurs.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-heading font-bold text-lg text-neutral-900 mb-3">9. Mise à jour</h2>
+        <p>
+          Cette politique de confidentialité peut être mise à jour à tout moment. La date de dernière modification est indiquée ci-dessous.
+        </p>
+        <p class="mt-3 text-neutral-500">Dernière mise à jour : 25 mars 2026</p>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

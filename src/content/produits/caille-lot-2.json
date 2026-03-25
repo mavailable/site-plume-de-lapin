@@ -1,0 +1,9 @@
+{
+  "nom": "Caille (lot de 2)",
+  "photo": "/images/produits/caille.jpg",
+  "prix": 8,
+  "categorie": "volailles",
+  "description": "Cailles fermières élevées en plein air. Viande délicate, parfaite rôtie ou grillée.",
+  "disponible": false,
+  "ordre": 8
+}

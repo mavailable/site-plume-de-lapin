@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Page introuvable — Plume de Lapin"
+  description="La page que vous recherchez n'existe pas."
+>
+  <Header slot="header" />
+
+  <section class="py-20 text-center max-w-2xl mx-auto px-6">
+    <h1 class="text-4xl font-heading font-bold text-primary-900">Page introuvable</h1>
+    <p class="mt-4 text-neutral-600 text-lg">
+      Désolé, cette page n'existe pas ou a été déplacée. Pas de panique — retrouvez nos produits fermiers ou contactez-nous.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/boutique" class="inline-block bg-accent-500 text-secondary-900 font-semibold py-3 px-6 rounded hover:bg-accent-600 transition-colors min-h-[44px] flex items-center justify-center">
+        Voir nos produits
+      </a>
+      <a href="/" class="inline-block border-2 border-primary-600 text-primary-700 font-semibold py-3 px-6 rounded hover:bg-primary-50 transition-colors min-h-[44px] flex items-center justify-center">
+        Retour à l'accueil
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

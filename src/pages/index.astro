@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Hero from '@/components/sections/Hero.astro';
+import SocialProof from '@/components/sections/SocialProof.astro';
+import Services from '@/components/sections/Services.astro';
+import Values from '@/components/sections/Values.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import About from '@/components/sections/About.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const siteUrl = import.meta.env.SITE || 'https://plumedelapin.fr';
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Farm",
+  "name": "Plume de Lapin",
+  "image": `${siteUrl}/images/og-image.jpg`,
+  "description": "Ferme familiale à Lantefontaine (54). Œufs fermiers, volailles de chair et lapin élevés en plein air.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "6 rue du château",
+    "addressLocality": "Lantefontaine",
+    "postalCode": "54150",
+    "addressRegion": "Grand Est",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33 6 XX XX XX XX",
+  "email": "contact@plumedelapin.fr",
+  "url": siteUrl,
+  "foundingDate": "2025",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "16:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "12:00" }
+  ],
+  "geo": { "@type": "GeoCoordinates", "latitude": 49.222, "longitude": 5.935 },
+  "sameAs": ["https://www.facebook.com/profile.php?id=61576018496272"]
+};
+---
+
+<BaseLayout
+  title="Plume de Lapin — Œufs fermiers, volailles et lapin à Lantefontaine (54)"
+  description="Ferme familiale à Lantefontaine. Œufs de poule et caille, poulet, poularde, pintade et lapin élevés en plein air. Vente directe et commande en ligne."
+>
+  <Header slot="header" />
+
+  <Hero />
+  <SocialProof />
+  <Services />
+  <Values />
+  <About />
+  <CTABanner />
+  <Testimonials />
+  <FAQ />
+
+  <Footer slot="footer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} slot="head" />
+</BaseLayout>

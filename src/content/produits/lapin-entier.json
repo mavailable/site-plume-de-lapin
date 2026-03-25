@@ -1,0 +1,9 @@
+{
+  "nom": "Lapin entier (~1,5 kg)",
+  "photo": "/images/produits/lapin.jpg",
+  "prix": 13,
+  "categorie": "lapin",
+  "description": "Lapin fermier élevé en plein air avec accès à l'extérieur. Viande maigre et savoureuse. Prix au kg.",
+  "disponible": false,
+  "ordre": 9
+}

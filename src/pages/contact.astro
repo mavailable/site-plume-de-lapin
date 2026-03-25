@@ -1,0 +1,158 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import { social } from '@/data/business';
+---
+
+<BaseLayout
+  title="Contact — Plume de Lapin, ferme à Lantefontaine (54150)"
+  description="Contactez la ferme Plume de Lapin à Lantefontaine. Horaires, plan d'accès et formulaire de contact. Vente directe d'œufs, volailles et lapin."
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h1 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 mb-4">
+        Contactez-nous
+      </h1>
+      <p class="text-neutral-600 max-w-xl mb-12">
+        Une question sur nos produits, nos horaires ou notre ferme ? Écrivez-nous, nous vous répondons rapidement.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <!-- Formulaire -->
+        <div class="lg:col-span-3">
+          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+            <input type="hidden" name="access_key" value="" />
+            <input type="hidden" name="redirect" value="https://plumedelapin.fr/merci" />
+            <input type="hidden" name="subject" value="Nouveau message — Plume de Lapin" />
+            <!-- Honeypot -->
+            <input type="checkbox" name="botcheck" class="hidden" />
+
+            <div>
+              <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">
+                Nom complet <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-neutral-700 mb-1">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-medium text-neutral-700 mb-1">
+                Téléphone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-neutral-700 mb-1">
+                Votre message <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors resize-y"
+              ></textarea>
+            </div>
+
+            <Button type="submit" variant="primary" size="lg" class="w-full sm:w-auto">
+              Envoyer mon message
+            </Button>
+
+            <p class="text-xs text-neutral-500">
+              En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre
+              <a href="/politique-confidentialite" class="underline hover:text-primary-600">politique de confidentialité</a>.
+            </p>
+          </form>
+        </div>
+
+        <!-- Sidebar infos -->
+        <aside class="lg:col-span-2">
+          <div class="bg-primary-50 rounded-xl p-6 space-y-6 sticky top-24">
+            <div>
+              <h3 class="font-heading font-bold text-primary-900 mb-2">Adresse</h3>
+              <p class="text-neutral-700 text-sm">
+                6 rue du château<br />
+                54150 Lantefontaine
+              </p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=6+rue+du+chateau+54150+Lantefontaine"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block mt-2 text-sm text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Voir sur Google Maps &rarr;
+              </a>
+            </div>
+
+            <div>
+              <h3 class="font-heading font-bold text-primary-900 mb-2">Horaires</h3>
+              <div class="text-neutral-700 text-sm space-y-1">
+                <p><strong>Vendredi</strong> : 16h – 19h</p>
+                <p><strong>Samedi</strong> : 9h – 12h</p>
+                <p class="text-neutral-500 mt-2">Sur commande en ligne le reste de la semaine</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-heading font-bold text-primary-900 mb-2">Contact direct</h3>
+              <p class="text-sm">
+                <a href="tel:+336XXXXXXXX" class="text-primary-600 hover:text-primary-700 font-medium">
+                  06 XX XX XX XX
+                </a>
+              </p>
+              <p class="text-sm mt-1">
+                <a href="mailto:contact@plumedelapin.fr" class="text-primary-600 hover:text-primary-700 font-medium">
+                  contact@plumedelapin.fr
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <a
+                href={social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-medium"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Suivez-nous sur Facebook
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

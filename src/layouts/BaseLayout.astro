@@ -1,0 +1,95 @@
+---
+import '@/styles/global.css';
+import { analytics } from '@/data/business';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl = Astro.url.href,
+  ogImage = '/images/og-image.jpg',
+} = Astro.props;
+
+const siteName = 'Plume de Lapin';
+const siteUrl = import.meta.env.SITE || 'https://plumedelapin.fr';
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1b3a20" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+
+    <!-- Umami Analytics — sans cookies, RGPD-exempt -->
+    {analytics.umamiWebsiteId && (
+      <script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id={analytics.umamiWebsiteId}
+      />
+    )}
+
+    <slot name="head" />
+  </head>
+  <body class="bg-neutral-50 text-neutral-800 font-body antialiased">
+    <!-- Skip-to-content (accessibilité WCAG 2.1 AA) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent-500 focus:text-secondary-900 focus:px-4 focus:py-2 focus:rounded focus:font-semibold"
+    >
+      Aller au contenu principal
+    </a>
+
+    <slot name="header" />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+
+    <!-- Conversion tracking (Umami events) -->
+    <script>
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (typeof umami !== 'undefined') umami.track('phone-click');
+        });
+      });
+      document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (typeof umami !== 'undefined') umami.track('email-click');
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import { getAbout } from '@/data/content';
+
+const about = getAbout();
+---
+
+<BaseLayout
+  title="Notre histoire — Plume de Lapin, ferme familiale en Lorraine"
+  description="Découvrez Sandra et Gaylord, fondateurs de Plume de Lapin. Élevage en plein air, circuit court et respect du bien-être animal à Lantefontaine (54)."
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <!-- Photo -->
+        <div class="lg:col-span-2">
+          <!-- TODO: Remplacer par photo de Sandra et Gaylord -->
+          <div class="aspect-[4/5] bg-primary-100 rounded-2xl flex items-center justify-center text-primary-400 sticky top-24">
+            <div class="text-center">
+              <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <p class="mt-2 text-sm">Photo à venir</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texte -->
+        <article class="lg:col-span-3">
+          <h1 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 mb-2">
+            Notre histoire
+          </h1>
+          <p class="text-primary-600 font-medium text-lg mb-8">{about.tagline}</p>
+
+          <div class="text-neutral-700 space-y-5 leading-relaxed">
+            <p>{about.paragraph1}</p>
+            <p>{about.paragraph2}</p>
+            <p>{about.paragraph3}</p>
+            <p>{about.paragraph4}</p>
+            <p>{about.paragraph5}</p>
+            <p>{about.paragraph6}</p>
+          </div>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <Button href="/boutique" variant="primary" size="lg">
+              Découvrir nos produits
+            </Button>
+            <Button href="/contact" variant="outline">
+              Nous contacter
+            </Button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

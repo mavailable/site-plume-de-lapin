@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"><title>Confirmation de réservation</title></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #2b2b27;">
+  <h1 style="color: #1b3a20; font-size: 24px;">Merci pour votre réservation !</h1>
+
+  <p style="font-size: 16px;">Bonjour {{client_nom}},</p>
+  <p style="font-size: 16px;">Nous avons bien reçu votre demande. Voici le récapitulatif :</p>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+    <thead>
+      <tr style="background: #f0f7f1;">
+        <th style="text-align: left; padding: 8px; border-bottom: 2px solid #bcdbbf;">Produit</th>
+        <th style="text-align: center; padding: 8px; border-bottom: 2px solid #bcdbbf;">Qté</th>
+        <th style="text-align: right; padding: 8px; border-bottom: 2px solid #bcdbbf;">Prix unit.</th>
+        <th style="text-align: right; padding: 8px; border-bottom: 2px solid #bcdbbf;">Sous-total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each items}}
+      <tr>
+        <td style="padding: 8px; border-bottom: 1px solid #e5e5e0;">{{nom}}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #e5e5e0; text-align: center;">{{quantite}}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #e5e5e0; text-align: right;">{{prix}} €</td>
+        <td style="padding: 8px; border-bottom: 1px solid #e5e5e0; text-align: right;">{{sous_total}} €</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <p style="font-size: 18px; font-weight: bold; text-align: right; margin-top: 16px; color: #854d0e;">
+    Total indicatif : {{total}} €
+  </p>
+
+  <p style="font-size: 14px; color: #73736b; margin-top: 8px; text-align: right;">
+    Les prix sont indicatifs et seront ajustés au poids réel lors du retrait.
+  </p>
+
+  <hr style="border: none; border-top: 1px solid #e5e5e0; margin: 24px 0;" />
+
+  <p style="font-size: 16px;">Nous préparons votre commande et vous recontacterons pour confirmer le retrait à la ferme :</p>
+  <p style="font-size: 16px; font-weight: bold;">📍 6 rue du château, 54150 Lantefontaine</p>
+
+  <p style="font-size: 16px; margin-top: 16px;">À très bientôt,<br><strong>Sandra et Gaylord — Plume de Lapin</strong></p>
+
+  <hr style="border: none; border-top: 1px solid #e5e5e0; margin: 24px 0;" />
+  <p style="font-size: 12px; color: #a3a39a;">
+    Conformément au RGPD, vos données personnelles sont utilisées uniquement pour traiter votre commande. Elles ne sont jamais partagées avec des tiers. Pour exercer vos droits, contactez-nous à contact@plumedelapin.fr.
+  </p>
+</body>
+</html>

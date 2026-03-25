@@ -1,0 +1,45 @@
+---
+const values = [
+  {
+    title: 'Bien-être animal',
+    description: 'Plein air, espace, alimentation saine. Pas de cages, pas d\'élevage intensif.',
+  },
+  {
+    title: 'Circuit court',
+    description: 'Du producteur au consommateur. Pas de grossiste, pas de transport longue distance.',
+  },
+  {
+    title: 'Terroir lorrain',
+    description: 'Lantefontaine, pays de Briey. Fournisseurs locaux, marchés du terroir.',
+  },
+  {
+    title: 'Ferme familiale',
+    description: 'Sandra et Gaylord. Deux passionnés, une ferme à taille humaine.',
+  },
+];
+---
+
+<section id="valeurs" class="py-20 sm:py-28 bg-primary-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <p class="text-accent-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">Nos engagements</p>
+    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white mb-16">
+      Ce en quoi nous croyons
+    </h2>
+
+    <div class="space-y-0 divide-y divide-primary-800">
+      {values.map((value, i) => (
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 py-8 group">
+          <div class="md:col-span-1">
+            <span class="text-accent-500 font-heading font-bold text-2xl">0{i + 1}</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="font-heading font-bold text-xl text-white">{value.title}</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-white/80 leading-relaxed">{value.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

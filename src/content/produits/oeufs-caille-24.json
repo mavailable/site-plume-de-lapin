@@ -1,0 +1,9 @@
+{
+  "nom": "Boîte de 24 œufs de caille",
+  "photo": "/images/produits/oeufs-caille.jpg",
+  "prix": 6,
+  "categorie": "oeufs",
+  "description": "Œufs de cailles élevées en plein air. Format familial, idéal pour cuisiner.",
+  "disponible": true,
+  "ordre": 4
+}

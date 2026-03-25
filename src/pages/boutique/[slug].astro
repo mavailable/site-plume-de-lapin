@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import AddToCartButton from '@/components/boutique/AddToCartButton';
+import { getProducts, getProductBySlug } from '@/data/content';
+
+export function getStaticPaths() {
+  const products = getProducts();
+  return products.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug!);
+
+if (!product) return Astro.redirect('/boutique');
+
+const unitLabel = ['volailles', 'lapin'].includes(product.categorie) ? '€/kg' : '€';
+const siteUrl = import.meta.env.SITE || 'https://plumedelapin.fr';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.nom,
+  "description": product.description,
+  "image": `${siteUrl}${product.photo}`,
+  "offers": {
+    "@type": "Offer",
+    "price": product.prix,
+    "priceCurrency": "EUR",
+    "availability": product.disponible ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+  }
+};
+---
+
+<BaseLayout
+  title={`${product.nom} — Plume de Lapin`}
+  description={product.description}
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-neutral-500 mb-8" aria-label="Fil d'Ariane">
+        <a href="/" class="hover:text-primary-600">Accueil</a>
+        <span class="mx-2">/</span>
+        <a href="/boutique" class="hover:text-primary-600">Boutique</a>
+        <span class="mx-2">/</span>
+        <span class="text-neutral-900">{product.nom}</span>
+      </nav>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Photo -->
+        <div class="aspect-square bg-neutral-100 rounded-xl flex items-center justify-center text-neutral-400">
+          <!-- TODO: Remplacer par vraie photo -->
+          <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+
+        <!-- Infos -->
+        <div>
+          <Badge variant={product.disponible ? 'available' : 'unavailable'}>
+            {product.disponible ? 'Disponible' : 'Indisponible — Revenez bientôt'}
+          </Badge>
+
+          <h1 class="mt-4 text-2xl sm:text-3xl font-heading font-bold text-neutral-900">
+            {product.nom}
+          </h1>
+
+          <p class="mt-2 text-3xl font-heading font-bold text-accent-800">
+            {product.prix.toFixed(2)} <span class="text-lg font-normal text-neutral-500">{unitLabel}</span>
+          </p>
+
+          <p class="mt-6 text-neutral-600 leading-relaxed">
+            {product.description}
+          </p>
+
+          <div class="mt-8">
+            {product.disponible ? (
+              <AddToCartButton
+                client:load
+                slug={product.slug}
+                nom={product.nom}
+                prix={product.prix}
+                photo={product.photo}
+              />
+            ) : (
+              <p class="text-neutral-500 italic">Ce produit n'est pas encore disponible.</p>
+            )}
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-neutral-200 text-sm text-neutral-500 space-y-2">
+            <p>Retrait à la ferme — 6 rue du château, 54150 Lantefontaine</p>
+            <p>Vendredi 16h–19h · Samedi 9h–12h</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <Button href="/boutique" variant="ghost">&larr; Retour à la boutique</Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+</BaseLayout>

@@ -1,0 +1,9 @@
+{
+  "nom": "Râble de lapin (lot de 2)",
+  "photo": "/images/produits/lapin.jpg",
+  "prix": 15,
+  "categorie": "lapin",
+  "description": "Râbles de lapin fermier. Le morceau le plus tendre, parfait pour les grillades. Prix au kg.",
+  "disponible": false,
+  "ordre": 11
+}

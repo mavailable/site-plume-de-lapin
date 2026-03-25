@@ -1,0 +1,9 @@
+{
+  "nom": "Demi-lapin",
+  "photo": "/images/produits/lapin.jpg",
+  "prix": 13,
+  "categorie": "lapin",
+  "description": "Demi-lapin fermier. Idéal pour 2 personnes. Prix au kg.",
+  "disponible": false,
+  "ordre": 10
+}

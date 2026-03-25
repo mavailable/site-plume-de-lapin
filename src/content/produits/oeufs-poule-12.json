@@ -1,0 +1,9 @@
+{
+  "nom": "Boîte de 12 œufs de poule fermiers",
+  "photo": "/images/produits/oeufs-poule.jpg",
+  "prix": 4.5,
+  "categorie": "oeufs",
+  "description": "Œufs de poules élevées en plein air à Lantefontaine. Jaune orangé, goût incomparable.",
+  "disponible": true,
+  "ordre": 2
+}

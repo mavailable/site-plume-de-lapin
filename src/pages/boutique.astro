@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import ProductGrid from '@/components/boutique/ProductGrid.astro';
+---
+
+<BaseLayout
+  title="Boutique fermière — Œufs, volailles et lapin | Plume de Lapin"
+  description="Commandez en ligne vos œufs fermiers, volailles de chair et lapin. Élevés en plein air à Lantefontaine. Retrait à la ferme."
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-10">
+        <h1 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900">
+          Notre boutique fermière
+        </h1>
+        <p class="mt-4 text-neutral-600">
+          Composez votre panier et réservez vos produits. Retrait à la ferme aux horaires d'ouverture.
+        </p>
+      </div>
+
+      <ProductGrid />
+
+      <p class="mt-8 text-sm text-neutral-500 text-center max-w-xl mx-auto">
+        Les prix affichés sont indicatifs et calculés sur la base du poids moyen. Le prix définitif vous sera communiqué lors du retrait.
+      </p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

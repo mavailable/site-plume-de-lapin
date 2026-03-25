@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CartDrawer from '@/components/boutique/CartDrawer';
+import OrderForm from '@/components/boutique/OrderForm';
+---
+
+<BaseLayout
+  title="Votre panier — Plume de Lapin"
+  description="Finalisez votre réservation de produits fermiers. Retrait à la ferme de Lantefontaine."
+>
+  <Header slot="header" />
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h1 class="text-3xl font-heading font-bold text-primary-900 mb-8">Votre panier</h1>
+
+      <CartDrawer client:load />
+      <OrderForm client:load />
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,9 @@
+{
+  "nom": "Poulet fermier entier (~1,8 kg)",
+  "photo": "/images/produits/poulet.jpg",
+  "prix": 12,
+  "categorie": "volailles",
+  "description": "Poulet fermier élevé en plein air, nourri aux céréales sans OGM. Chair tendre et goûteuse. Prix au kg.",
+  "disponible": false,
+  "ordre": 5
+}

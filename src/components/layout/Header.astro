@@ -1,0 +1,84 @@
+---
+import CartIcon from '@/components/boutique/CartIcon';
+
+const navLinks = [
+  { label: 'Boutique', href: '/boutique' },
+  { label: 'Notre histoire', href: '/a-propos' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="sticky top-0 z-40 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Navigation principale">
+    <a href="/" class="font-heading font-bold text-white text-lg tracking-wide uppercase">
+      Plume de Lapin
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <li>
+          <a href={link.href} class="text-white/80 hover:text-accent-400 transition-colors text-sm uppercase tracking-wider font-medium">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <CartIcon client:load />
+      <a href="/boutique" class="hidden md:inline-flex bg-accent-500 text-secondary-950 font-bold text-xs uppercase tracking-wider py-2.5 px-5 hover:bg-accent-400 transition-colors min-h-[44px] items-center">
+        Commander
+      </a>
+      <button
+        id="menu-toggle"
+        class="md:hidden p-2 text-white hover:text-accent-400 min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="md:hidden hidden bg-primary-950 border-t border-primary-800" role="dialog" aria-label="Menu de navigation">
+    <ul class="px-4 py-4 space-y-1">
+      {navLinks.map(link => (
+        <li>
+          <a href={link.href} class="block py-3 px-3 text-white/80 hover:text-accent-400 hover:bg-primary-900 transition-colors font-medium uppercase tracking-wider text-sm">
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-3">
+        <a href="/boutique" class="block text-center bg-accent-500 text-secondary-950 font-bold py-3 px-4 uppercase tracking-wider text-sm hover:bg-accent-400 transition-colors">
+          Commander
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
+    if (icon) icon.setAttribute('d', isOpen ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      menu?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Ouvrir le menu');
+      if (icon) icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      toggle?.focus();
+    }
+  });
+</script>
