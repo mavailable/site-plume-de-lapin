@@ -9,7 +9,7 @@ const keystatic = isKeystatic ? (await import('@keystatic/astro')).default : nul
 const cloudflare = isKeystatic ? (await import('@astrojs/cloudflare')).default : null;
 
 export default defineConfig({
-  site: 'https://plumedelapin.fr',
+  site: 'https://site-plume-de-lapin.pages.dev',
   output: isKeystatic ? 'hybrid' : 'static',
   adapter: isKeystatic ? cloudflare() : undefined,
   integrations: [
