@@ -5,40 +5,76 @@ import { getHero } from '@/data/content';
 const hero = getHero();
 ---
 
-<section id="hero" class="bg-secondary-50 py-16 sm:py-24 lg:py-32 relative overflow-hidden">
-  <!-- Forme organique décorative -->
-  <div class="absolute -top-20 -right-20 w-96 h-96 bg-primary-100 rounded-full opacity-40 blur-3xl"></div>
-  <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-accent-100 rounded-full opacity-30 blur-3xl"></div>
+<section id="hero" class="relative bg-primary-900 overflow-hidden">
+  <!-- Photo de fond placeholder -->
+  <div class="absolute inset-0">
+    <!-- TODO: Remplacer par photo panoramique de la ferme -->
+    <div class="w-full h-full bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-800"></div>
+    <div class="absolute inset-0 bg-black/35"></div>
+  </div>
 
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
-    <!-- Logo grand centré -->
-    <img src="/images/logo.jpg" alt="Plume de Lapin" class="w-28 h-28 mx-auto rounded-full object-cover border-2 border-primary-200 shadow-lg mb-8" />
+  <!-- Formes organiques décoratives -->
+  <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute -top-32 -left-32 w-80 h-80 bg-primary-400/10 rounded-full blur-3xl"></div>
 
-    <span class="inline-block bg-primary-100 text-primary-800 text-xs font-semibold px-4 py-1.5 rounded-full mb-5 border border-primary-200">
-      Ferme familiale en Meurthe-et-Moselle
-    </span>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-32 lg:py-40">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Texte -->
+      <div>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
+          <div class="w-2 h-2 bg-accent-400 rounded-full"></div>
+          <span class="text-white/90 text-sm font-medium">Ferme familiale — Lantefontaine (54)</span>
+        </div>
 
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary-900 leading-tight max-w-3xl mx-auto">
-      {hero.title}
-    </h1>
-    <p class="mt-6 text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-      {hero.subtitle}
-    </p>
-    <div class="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
-      <Button href={hero.ctaLink} variant="primary" size="lg">
-        {hero.ctaText}
-      </Button>
-      <Button href={hero.ctaSecondaryLink} variant="outline" size="lg">
-        {hero.ctaSecondaryText}
-      </Button>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight">
+          {hero.title}
+        </h1>
+        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-lg">
+          {hero.subtitle}
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <Button href={hero.ctaLink} variant="secondary" size="lg">
+            {hero.ctaText}
+          </Button>
+          <Button href={hero.ctaSecondaryLink} variant="outline" size="lg" class="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50">
+            {hero.ctaSecondaryText}
+          </Button>
+        </div>
+        <p class="mt-5 text-sm text-white/70">{hero.reassurance}</p>
+      </div>
+
+      <!-- Photo collage placeholder -->
+      <div class="hidden lg:block relative">
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Photo principale -->
+          <div class="col-span-2 aspect-[16/10] bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 flex items-center justify-center">
+            <div class="text-center text-white/40">
+              <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="0.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              <p class="mt-2 text-xs">Photo de la ferme</p>
+            </div>
+          </div>
+          <!-- 2 petites photos -->
+          <div class="aspect-square bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 flex items-center justify-center">
+            <div class="text-center text-white/40">
+              <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="0.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              <p class="mt-1 text-[10px]">Les animaux</p>
+            </div>
+          </div>
+          <div class="aspect-square bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 flex items-center justify-center">
+            <div class="text-center text-white/40">
+              <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="0.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              <p class="mt-1 text-[10px]">Les produits</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="mt-5 text-sm text-neutral-500">{hero.reassurance}</p>
   </div>
 
   <!-- Séparateur vague -->
   <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full text-white" preserveAspectRatio="none">
-      <path d="M0 60h1440V30c-240 20-480 30-720 25S240 30 0 5v55z" fill="currentColor"/>
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
+      <path d="M0 60h1440V30c-240 20-480 30-720 25S240 30 0 5v55z" fill="#fafaf8"/>
     </svg>
   </div>
 </section>

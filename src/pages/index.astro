@@ -10,6 +10,7 @@ import Testimonials from '@/components/sections/Testimonials.astro';
 import About from '@/components/sections/About.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
+import Gallery from '@/components/sections/Gallery.astro';
 
 const siteUrl = import.meta.env.SITE || 'https://plumedelapin.fr';
 
@@ -49,8 +50,9 @@ const businessSchema = {
   <Hero />
   <SocialProof />
   <Services />
-  <Values />
   <About />
+  <Gallery />
+  <Values />
   <CTABanner />
   <Testimonials />
   <FAQ />
