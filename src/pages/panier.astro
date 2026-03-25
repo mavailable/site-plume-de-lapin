@@ -12,12 +12,41 @@ import OrderForm from '@/components/boutique/OrderForm';
 >
   <Header slot="header" />
 
-  <section class="py-12 sm:py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <h1 class="text-3xl font-heading font-bold text-primary-900 mb-8">Votre panier</h1>
+  <section class="py-10 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-neutral-500 mb-8" aria-label="Fil d'Ariane">
+        <a href="/" class="hover:text-primary-600">Accueil</a>
+        <span class="mx-2">/</span>
+        <a href="/boutique" class="hover:text-primary-600">Boutique</a>
+        <span class="mx-2">/</span>
+        <span class="text-neutral-900">Panier</span>
+      </nav>
 
-      <CartDrawer client:load />
-      <OrderForm client:load />
+      <h1 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 mb-2">Votre panier</h1>
+      <p class="text-neutral-500 mb-8">Vérifiez votre sélection puis renseignez vos coordonnées pour réserver.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <!-- Panier (3/5) -->
+        <div class="lg:col-span-3">
+          <CartDrawer client:load />
+        </div>
+
+        <!-- Sidebar résumé + formulaire (2/5) -->
+        <div class="lg:col-span-2">
+          <div class="sticky top-24">
+            <!-- Infos retrait -->
+            <div class="bg-primary-50 rounded-xl p-5 border border-primary-100 mb-6">
+              <h3 class="font-heading font-bold text-primary-900 text-sm mb-2">Retrait à la ferme</h3>
+              <p class="text-sm text-neutral-700">6 rue du château, 54150 Lantefontaine</p>
+              <p class="text-sm text-neutral-500 mt-1">Vendredi 16h–19h · Samedi 9h–12h</p>
+            </div>
+
+            <!-- Formulaire -->
+            <OrderForm client:load />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

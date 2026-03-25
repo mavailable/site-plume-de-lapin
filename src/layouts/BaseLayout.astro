@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { analytics } from '@/data/business';
+import CartSlider from '@/components/boutique/CartSlider';
 
 interface Props {
   title: string;
@@ -77,6 +78,9 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     </main>
 
     <slot name="footer" />
+
+    <!-- Mini-panier slide-in (toutes les pages) -->
+    <CartSlider client:load />
 
     <!-- Conversion tracking (Umami events) -->
     <script>

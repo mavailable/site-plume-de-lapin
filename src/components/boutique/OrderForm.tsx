@@ -1,10 +1,11 @@
 import { useStore } from '@nanostores/react';
-import { $cart, $cartTotal, clearCart } from '@/stores/cart';
+import { $cart, $cartTotal, $cartCount, clearCart } from '@/stores/cart';
 import { useState } from 'react';
 
 export default function OrderForm() {
   const cart = useStore($cart);
   const total = useStore($cartTotal);
+  const count = useStore($cartCount);
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
 
   const items = Object.values(cart);
@@ -52,82 +53,87 @@ export default function OrderForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 mt-8">
-      <h2 className="font-heading font-bold text-xl text-neutral-900">Vos coordonnées</h2>
-
-      <div>
-        <label htmlFor="nom" className="block text-sm font-medium text-neutral-700 mb-1">
-          Nom complet <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="nom"
-          name="nom"
-          required
-          className="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-        />
+    <div className="bg-white rounded-xl border border-neutral-200 overflow-hidden">
+      <div className="px-5 py-4 bg-neutral-50 border-b border-neutral-200">
+        <h2 className="font-heading font-bold text-neutral-900">Vos coordonnées</h2>
+        <p className="text-xs text-neutral-500 mt-0.5">Pour confirmer votre réservation</p>
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
-          Email <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          className="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="telephone" className="block text-sm font-medium text-neutral-700 mb-1">
-          Téléphone <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="tel"
-          id="telephone"
-          name="telephone"
-          required
-          className="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
-          Message (optionnel)
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={3}
-          placeholder="Précisez vos préférences ou un créneau de retrait souhaité"
-          className="w-full px-4 py-3 border border-neutral-300 rounded focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors resize-y"
-        />
-      </div>
-
-      {status === 'error' && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded text-sm" role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
+      <form onSubmit={handleSubmit} className="p-5 space-y-4">
+        <div>
+          <label htmlFor="nom" className="block text-sm font-medium text-neutral-700 mb-1">
+            Nom complet <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            required
+            className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+          />
         </div>
-      )}
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full bg-accent-500 text-secondary-900 font-semibold py-4 px-6 rounded hover:bg-accent-600 transition-colors min-h-[52px] text-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-      >
-        {status === 'sending' ? 'Envoi en cours...' : 'Envoyer ma réservation'}
-      </button>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+          />
+        </div>
 
-      <p className="text-xs text-neutral-500 text-center">
-        En soumettant ce formulaire, vous acceptez que vos données soient traitées conformément à notre{' '}
-        <a href="/politique-confidentialite" className="underline hover:text-primary-600">
-          politique de confidentialité
-        </a>
-        .
-      </p>
-    </form>
+        <div>
+          <label htmlFor="telephone" className="block text-sm font-medium text-neutral-700 mb-1">
+            Téléphone <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="tel"
+            id="telephone"
+            name="telephone"
+            required
+            className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
+            Message <span className="text-neutral-400">(optionnel)</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={2}
+            placeholder="Créneau de retrait souhaité, préférences..."
+            className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-y"
+          />
+        </div>
+
+        {status === 'error' && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
+            Une erreur est survenue. Réessayez ou contactez-nous directement.
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="w-full bg-accent-500 text-secondary-900 font-bold py-3.5 rounded-lg hover:bg-accent-400 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+        >
+          {status === 'sending' ? 'Envoi en cours...' : `Réserver (${total.toFixed(2)} €)`}
+        </button>
+
+        <p className="text-[11px] text-neutral-400 text-center leading-relaxed">
+          En validant, vous acceptez notre{' '}
+          <a href="/politique-confidentialite" className="underline hover:text-primary-600">
+            politique de confidentialité
+          </a>
+          . Paiement au retrait uniquement.
+        </p>
+      </form>
+    </div>
   );
 }
