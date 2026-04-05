@@ -15,46 +15,27 @@ const hero = getHero();
   <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
   <div class="absolute -top-32 -left-32 w-80 h-80 bg-primary-400/10 rounded-full blur-3xl"></div>
 
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-32 lg:py-40">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Texte -->
-      <div>
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
-          <div class="w-2 h-2 bg-accent-400 rounded-full"></div>
-          <span class="text-white/90 text-sm font-medium">Ferme familiale — Lantefontaine (54)</span>
-        </div>
-
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight">
-          {hero.title}
-        </h1>
-        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-lg">
-          {hero.subtitle}
-        </p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <Button href={hero.ctaLink} variant="secondary" size="lg">
-            {hero.ctaText}
-          </Button>
-          <Button href={hero.ctaSecondaryLink} variant="outline" size="lg" class="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50">
-            {hero.ctaSecondaryText}
-          </Button>
-        </div>
-        <p class="mt-5 text-sm text-white/70">{hero.reassurance}</p>
-      </div>
-
-      <div class="hidden lg:block relative">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="col-span-2 aspect-[16/10] rounded-xl border border-white/10 overflow-hidden">
-            <img src="/images/hero-ferme.jpg" alt="La ferme Plume de Lapin" class="w-full h-full object-cover" loading="eager" />
-          </div>
-          <div class="aspect-square rounded-xl border border-white/10 overflow-hidden">
-            <img src="/images/hero-animaux.jpg" alt="Nos animaux" class="w-full h-full object-cover" loading="eager" />
-          </div>
-          <div class="aspect-square rounded-xl border border-white/10 overflow-hidden">
-            <img src="/images/hero-produits.jpg" alt="Nos produits fermiers" class="w-full h-full object-cover" loading="eager" />
-          </div>
-        </div>
-      </div>
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-28 sm:py-36 lg:py-44 text-center">
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
+      <div class="w-2 h-2 bg-accent-400 rounded-full"></div>
+      <span class="text-white/90 text-sm font-medium">Ferme familiale — Lantefontaine (54)</span>
     </div>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight">
+      {hero.title}
+    </h1>
+    <p class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto">
+      {hero.subtitle}
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <Button href={hero.ctaLink} variant="secondary" size="lg">
+        {hero.ctaText}
+      </Button>
+      <Button href={hero.ctaSecondaryLink} variant="outline" size="lg" class="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50">
+        {hero.ctaSecondaryText}
+      </Button>
+    </div>
+    <p class="mt-5 text-sm text-white/70">{hero.reassurance}</p>
   </div>
 
   <!-- Séparateur vague -->
