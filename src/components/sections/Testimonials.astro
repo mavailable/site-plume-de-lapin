@@ -4,7 +4,7 @@ import { getTestimonials } from '@/data/content';
 const testimonials = getTestimonials();
 ---
 
-<section id="temoignages" class="py-16 sm:py-24 bg-white">
+<section id="temoignages" class="py-16 sm:py-24 bg-white" data-cms-field="testimonials" data-cms-type="collection">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 text-center mb-4">
       Ce que disent nos clients
@@ -14,7 +14,7 @@ const testimonials = getTestimonials();
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {testimonials.map((t) => (
         <article class="bg-secondary-50 rounded-xl p-6 border border-secondary-100">
-          <blockquote class="text-neutral-700 leading-relaxed italic">
+          <blockquote class="text-neutral-700 leading-relaxed italic" data-cms-field={`testimonials.${t.slug}.quote`} data-cms-type="text">
             « {t.quote} »
           </blockquote>
           <footer class="mt-5 flex items-center gap-3">
@@ -22,8 +22,8 @@ const testimonials = getTestimonials();
               {t.name.charAt(0)}
             </div>
             <div>
-              <p class="font-heading font-bold text-neutral-900 text-sm">{t.name}</p>
-              <p class="text-xs text-neutral-500">{t.context}</p>
+              <p class="font-heading font-bold text-neutral-900 text-sm" data-cms-field={`testimonials.${t.slug}.name`} data-cms-type="text">{t.name}</p>
+              <p class="text-xs text-neutral-500" data-cms-field={`testimonials.${t.slug}.context`} data-cms-type="text">{t.context}</p>
             </div>
           </footer>
         </article>

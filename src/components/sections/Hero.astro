@@ -7,7 +7,7 @@ const hero = getHero();
 
 <section id="hero" class="relative bg-primary-900 overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/images/hero-bg.jpg" alt="" class="w-full h-full object-cover" loading="eager" />
+    <img src="/images/hero-bg.jpg" alt="" class="w-full h-full object-cover" loading="eager" data-cms-field="hero.image" data-cms-type="image" />
     <div class="absolute inset-0 bg-black/35"></div>
   </div>
 
@@ -21,10 +21,10 @@ const hero = getHero();
       <span class="text-white/90 text-sm font-medium">Ferme familiale — Lantefontaine (54)</span>
     </div>
 
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight" data-cms-field="hero.title" data-cms-type="text">
       {hero.title}
     </h1>
-    <p class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto">
+    <p class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto" data-cms-field="hero.subtitle" data-cms-type="text">
       {hero.subtitle}
     </p>
     <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -35,7 +35,7 @@ const hero = getHero();
         {hero.ctaSecondaryText}
       </Button>
     </div>
-    <p class="mt-5 text-sm text-white/70">{hero.reassurance}</p>
+    <p class="mt-5 text-sm text-white/70" data-cms-field="hero.reassurance" data-cms-type="text">{hero.reassurance}</p>
   </div>
 
   <!-- Séparateur vague -->

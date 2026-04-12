@@ -22,14 +22,14 @@ const about = getAbout();
         <span class="inline-block bg-primary-100 text-primary-800 text-xs font-semibold px-4 py-1.5 rounded-full border border-primary-200 mb-5">
           Notre histoire
         </span>
-        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-primary-900">
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-primary-900" data-cms-field="about.directorName" data-cms-type="text">
           {about.directorName}
         </h2>
-        <p class="text-primary-600 font-medium mt-2 italic mb-6">{about.tagline}</p>
+        <p class="text-primary-600 font-medium mt-2 italic mb-6" data-cms-field="about.tagline" data-cms-type="text">{about.tagline}</p>
 
         <div class="text-neutral-700 space-y-4 leading-relaxed">
-          <p>{about.paragraph1}</p>
-          <p>{about.paragraph2}</p>
+          <p data-cms-field="about.paragraph1" data-cms-type="text">{about.paragraph1}</p>
+          <p data-cms-field="about.paragraph2" data-cms-type="text">{about.paragraph2}</p>
         </div>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">

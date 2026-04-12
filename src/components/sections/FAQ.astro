@@ -14,7 +14,7 @@ const faqSchema = {
 };
 ---
 
-<section id="faq" class="py-16 sm:py-24 bg-neutral-50">
+<section id="faq" class="py-16 sm:py-24 bg-neutral-50" data-cms-field="faq" data-cms-type="collection">
   <div class="max-w-3xl mx-auto px-4 sm:px-6">
     <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary-900 text-center mb-14">
       Questions fréquentes
@@ -24,12 +24,12 @@ const faqSchema = {
       {faqItems.map((item) => (
         <details class="group bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
           <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-neutral-900 font-medium hover:bg-primary-50 transition-colors min-h-[44px] list-none">
-            <span class="pr-4">{item.question}</span>
+            <span class="pr-4" data-cms-field={`faq.${item.slug}.question`} data-cms-type="text">{item.question}</span>
             <svg class="w-5 h-5 text-primary-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </summary>
-          <div class="px-6 pb-5 text-neutral-600 leading-relaxed">
+          <div class="px-6 pb-5 text-neutral-600 leading-relaxed" data-cms-field={`faq.${item.slug}.answer`} data-cms-type="text">
             {item.answer}
           </div>
         </details>

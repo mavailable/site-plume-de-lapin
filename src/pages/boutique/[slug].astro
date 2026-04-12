@@ -54,7 +54,7 @@ const productSchema = {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div class="aspect-square rounded-xl overflow-hidden">
-          <img src={product.photo} alt={product.nom} class="w-full h-full object-cover" loading="eager" />
+          <img src={product.photo} alt={product.nom} class="w-full h-full object-cover" loading="eager" data-cms-field={`produits.${product.slug}.photo`} data-cms-type="image" />
         </div>
 
         <!-- Infos -->
@@ -63,7 +63,7 @@ const productSchema = {
             {product.disponible ? 'Disponible' : 'Indisponible — Revenez bientôt'}
           </Badge>
 
-          <h1 class="mt-4 text-2xl sm:text-3xl font-heading font-bold text-neutral-900">
+          <h1 class="mt-4 text-2xl sm:text-3xl font-heading font-bold text-neutral-900" data-cms-field={`produits.${product.slug}.nom`} data-cms-type="text">
             {product.nom}
           </h1>
 
@@ -71,7 +71,7 @@ const productSchema = {
             {product.prix.toFixed(2)} <span class="text-lg font-normal text-neutral-500">{unitLabel}</span>
           </p>
 
-          <p class="mt-6 text-neutral-600 leading-relaxed">
+          <p class="mt-6 text-neutral-600 leading-relaxed" data-cms-field={`produits.${product.slug}.description`} data-cms-type="text">
             {product.description}
           </p>
 
