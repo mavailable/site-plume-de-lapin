@@ -12,6 +12,9 @@ export function useAuth() {
     try {
       const res = await fetch('/api/cms/session');
       const data = await res.json();
+      if (data.valid === true) {
+        document.cookie = 'cms_logged_in=1; Secure; SameSite=Strict; Path=/; Max-Age=86400';
+      }
       setState({ checking: false, authenticated: data.valid === true });
     } catch {
       setState({ checking: false, authenticated: false });
@@ -31,6 +34,7 @@ export function useAuth() {
       });
 
       if (res.ok) {
+        document.cookie = 'cms_logged_in=1; Secure; SameSite=Strict; Path=/; Max-Age=86400';
         setState({ checking: false, authenticated: true });
         return null;
       }
@@ -42,9 +46,13 @@ export function useAuth() {
     }
   }, []);
 
-  const logout = useCallback(() => {
-    // Supprimer le cookie côté client (le serveur l'invalidera aussi)
-    document.cookie = 'cms_session=; Path=/; Max-Age=0';
+  const logout = useCallback(async () => {
+    try {
+      await fetch('/api/cms/logout', { method: 'POST' });
+    } catch {
+      // fallback: clear cookie client-side
+      document.cookie = 'cms_logged_in=; Path=/; Max-Age=0';
+    }
     setState({ checking: false, authenticated: false });
   }, []);
 

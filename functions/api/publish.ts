@@ -1,10 +1,25 @@
-const OWNER = 'mavailable';
-const REPO = 'site-plume-de-lapin';
+import { requireAuth, checkOrigin, jsonHeaders } from './cms/_auth-helpers.js';
 
-export const onRequestPost: PagesFunction<{ GITHUB_TOKEN: string }> = async ({ env }) => {
+export const onRequestPost: PagesFunction<{ GITHUB_TOKEN: string; CMS_SESSION_SECRET: string; CMS_REPO: string }> = async ({ request, env }) => {
+  // Auth check
+  try {
+    await requireAuth(request, env);
+  } catch (authError) {
+    return authError as Response;
+  }
+
+  // CSRF check
+  if (!checkOrigin(request)) {
+    return new Response(
+      JSON.stringify({ error: 'Origine non autorisée' }),
+      { status: 403, headers: jsonHeaders() }
+    );
+  }
+
   const token = env.GITHUB_TOKEN;
-  if (!token) {
-    return Response.json({ ok: false, error: 'GITHUB_TOKEN manquant' }, { status: 500 });
+  const repo = env.CMS_REPO;
+  if (!token || !repo) {
+    return Response.json({ ok: false, error: 'GITHUB_TOKEN ou CMS_REPO manquant' }, { status: 500 });
   }
 
   const headers = {
@@ -12,12 +27,12 @@ export const onRequestPost: PagesFunction<{ GITHUB_TOKEN: string }> = async ({ e
     Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',
     'Content-Type': 'application/json',
-    'User-Agent': `${REPO}-publish`,
+    'User-Agent': `${repo.split('/')[1]}-publish`,
   };
 
-  // 1. Recupere le SHA actuel de dev
+  // 1. Récupère le SHA actuel de dev
   const devRes = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/git/refs/heads/dev`,
+    `https://api.github.com/repos/${repo}/git/refs/heads/dev`,
     { headers }
   );
   if (!devRes.ok) {
@@ -26,9 +41,9 @@ export const onRequestPost: PagesFunction<{ GITHUB_TOKEN: string }> = async ({ e
   const devData = await devRes.json() as { object: { sha: string } };
   const sha = devData.object.sha;
 
-  // 2. Tente de mettre a jour master
+  // 2. Tente de mettre à jour master
   const patchRes = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/git/refs/heads/master`,
+    `https://api.github.com/repos/${repo}/git/refs/heads/master`,
     { method: 'PATCH', headers, body: JSON.stringify({ sha, force: false }) }
   );
 
@@ -36,17 +51,17 @@ export const onRequestPost: PagesFunction<{ GITHUB_TOKEN: string }> = async ({ e
     return Response.json({ ok: true });
   }
 
-  // 3. Si master n'existe pas (422), on la cree
+  // 3. Si master n'existe pas (422), on la crée
   if (patchRes.status === 422) {
     const createRes = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/git/refs`,
+      `https://api.github.com/repos/${repo}/git/refs`,
       { method: 'POST', headers, body: JSON.stringify({ ref: 'refs/heads/master', sha }) }
     );
     if (createRes.ok) {
       return Response.json({ ok: true });
     }
     const err = await createRes.json() as { message?: string };
-    return Response.json({ ok: false, error: err.message ?? 'Erreur creation master' }, { status: 500 });
+    return Response.json({ ok: false, error: err.message ?? 'Erreur création master' }, { status: 500 });
   }
 
   const err = await patchRes.json() as { message?: string };

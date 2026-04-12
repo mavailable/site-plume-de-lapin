@@ -3,24 +3,21 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
-const isKeystatic = process.env.KEYSTATIC === 'true';
-
-const keystatic = isKeystatic ? (await import('@keystatic/astro')).default : null;
-const cloudflare = isKeystatic ? (await import('@astrojs/cloudflare')).default : null;
-
 export default defineConfig({
-  site: 'https://site-plume-de-lapin.pages.dev',
-  output: isKeystatic ? 'hybrid' : 'static',
-  adapter: isKeystatic ? cloudflare() : undefined,
+  site: 'https://plumedelapin.fr',
+  output: 'static',
   integrations: [
-    sitemap({ i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } } }),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/merci') &&
+        !page.includes('/404') &&
+        !page.includes('/admin'),
+      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } },
+    }),
     react(),
-    ...(isKeystatic && keystatic ? [keystatic()] : []),
   ],
   compressHTML: true,
-  build: {
-    inlineStylesheets: 'auto',
-  },
+  build: { inlineStylesheets: 'auto' },
   vite: {
     plugins: [tailwindcss()],
     build: { cssMinify: true },
