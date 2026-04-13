@@ -3,7 +3,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Button from '@/components/ui/Button.astro';
-import { social } from '@/data/business';
+import { social, web3formsKey as fallbackKey } from '@/data/business';
+import fs from 'node:fs';
+
+// Web3Forms — cascade: CMS content → env var → cle Marc (defaut agence)
+let cmsKey = '';
+try {
+  const raw = fs.readFileSync('src/content/contact/index.json', 'utf-8');
+  cmsKey = JSON.parse(raw).web3formsKey || '';
+} catch {}
+const web3formsKey = cmsKey || fallbackKey;
 ---
 
 <BaseLayout
@@ -25,7 +34,7 @@ import { social } from '@/data/business';
         <!-- Formulaire -->
         <div class="lg:col-span-3">
           <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-            <input type="hidden" name="access_key" value="c9ac45a9-a385-453d-a703-4af36d15bef8" />
+            <input type="hidden" name="access_key" value={web3formsKey} />
             <input type="hidden" name="redirect" value="https://plumedelapin.fr/merci" />
             <input type="hidden" name="subject" value="Nouveau message — Plume de Lapin" />
             <!-- Honeypot -->
