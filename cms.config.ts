@@ -60,7 +60,7 @@ const cmsConfig: CmsConfig = {
         title: { type: 'text', label: 'Titre' },
         subtitle: { type: 'text', label: 'Sous-titre' },
         buttonText: { type: 'text', label: 'Texte du bouton' },
-        web3formsKey: { type: 'text', label: 'Cle Web3Forms (formulaire)', description: 'Creez votre cle gratuite sur web3forms.com puis collez-la ici pour recevoir vos formulaires directement.' },
+        web3formsKey: { type: 'text', label: 'Cle Web3Forms (formulaire)', description: 'Collez votre cle pour recevoir vos formulaires directement. Guide : marcm.fr/aide/web3forms' },
       },
     },
   },
