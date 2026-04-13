@@ -34,7 +34,7 @@ const unitLabel = ['volailles', 'lapin'].includes(categorie) ? '€/kg' : '€';
       <p class="mt-1 text-sm text-neutral-500 line-clamp-2" data-cms-field={`produits.${slug}.description`} data-cms-type="text">{description}</p>
     </a>
     <div class="mt-4 flex items-center justify-between">
-      <p class="font-heading font-bold text-xl text-accent-800">
+      <p class="font-heading font-bold text-xl text-accent-800" data-cms-field={`produits.${slug}.prix`} data-cms-type="number">
         {prix.toFixed(2)} <span class="text-xs font-normal text-neutral-400">{unitLabel}</span>
       </p>
       {disponible && (

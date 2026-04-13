@@ -7,7 +7,7 @@ const hero = getHero();
 
 <section id="hero" class="relative bg-primary-900 overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/images/hero-bg.jpg" alt="" class="w-full h-full object-cover" loading="eager" data-cms-field="hero.image" data-cms-type="image" />
+    <img src={hero.image || '/images/hero-bg.jpg'} alt="" class="w-full h-full object-cover" loading="eager" data-cms-field="hero.image" data-cms-type="image" />
     <div class="absolute inset-0 bg-black/35"></div>
   </div>
 

@@ -33,6 +33,7 @@ const cmsConfig: CmsConfig = {
         ctaSecondaryText: { type: 'text', label: 'CTA secondaire — texte' },
         ctaSecondaryLink: { type: 'text', label: 'CTA secondaire — lien' },
         reassurance: { type: 'text', label: 'Reassurance' },
+        image: { type: 'image', label: 'Image de fond' },
       },
     },
 
