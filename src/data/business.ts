@@ -19,7 +19,7 @@ export const social = {
 } as const;
 
 export const analytics = {
-  umamiWebsiteId: '', // À remplir après création du site Umami
+  umamiWebsiteId: 'a4148f0d-2f9e-4133-b5f3-f25d851d8a5b',
 } as const;
 
 // Web3Forms API key — cascade: CMS content → env var → cle Marc (defaut agence)

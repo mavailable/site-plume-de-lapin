@@ -5,6 +5,19 @@ const cmsConfig: CmsConfig = {
   branch: 'master',
   siteName: 'Plume de Lapin',
 
+  site: {
+    ownerName: 'Sandra & Gaylord',
+    siteUrl: 'https://plumedelapin.fr',
+    previewUrl: 'https://site-plume-de-lapin.pages.dev',
+    umamiSiteId: 'a4148f0d-2f9e-4133-b5f3-f25d851d8a5b',
+    umamiShareUrl: 'https://cloud.umami.is/share/wwVA8VTwswW2XDvW/site-plume-de-lapin.pages.dev',
+    contactMarc: {
+      phone: '06 88 76 66 48',
+      whatsapp: '33688766648',
+      email: 'marc@muller.im',
+    },
+  },
+
   singletons: {
     'site-info': {
       label: 'Infos du site',
