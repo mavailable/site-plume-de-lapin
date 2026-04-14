@@ -146,6 +146,17 @@
         el.addEventListener('keydown', el._cmsHandlers.keydown);
       }
 
+      if (type === 'richtext') {
+        originalValues[field] = el.innerHTML || '';
+        el.setAttribute('contenteditable', 'true');
+        el.classList.add('cms-editable', 'cms-editable-richtext');
+        el._cmsHandlers = { focus: handleFocus, blur: handleBlur, input: handleInput, keydown: handleKeydown };
+        el.addEventListener('focus', el._cmsHandlers.focus);
+        el.addEventListener('blur', el._cmsHandlers.blur);
+        el.addEventListener('input', el._cmsHandlers.input);
+        el.addEventListener('keydown', el._cmsHandlers.keydown);
+      }
+
       if (type === 'image') {
         originalValues[field] = el.getAttribute('src') || '';
         addImageOverlay(el, field);
@@ -171,9 +182,9 @@
 
     document.querySelectorAll('[data-cms-field]').forEach(function (el) {
       var type = el.getAttribute('data-cms-type') || 'text';
-      if (type === 'text') {
+      if (type === 'text' || type === 'richtext') {
         el.removeAttribute('contenteditable');
-        el.classList.remove('cms-editable', 'cms-editable-focus');
+        el.classList.remove('cms-editable', 'cms-editable-focus', 'cms-editable-richtext');
         if (el._cmsHandlers) {
           el.removeEventListener('focus', el._cmsHandlers.focus);
           el.removeEventListener('blur', el._cmsHandlers.blur);
@@ -204,6 +215,7 @@
       if (!el) continue;
       var type = el.getAttribute('data-cms-type') || 'text';
       if (type === 'text') el.textContent = originalValues[field];
+      if (type === 'richtext') el.innerHTML = originalValues[field];
       if (type === 'image') el.setAttribute('src', originalValues[field]);
     }
     // Restaurer couleurs
@@ -236,7 +248,8 @@
   function handleInput(e) {
     var el = e.target;
     var field = el.getAttribute('data-cms-field');
-    var newValue = el.textContent || '';
+    var type = el.getAttribute('data-cms-type') || 'text';
+    var newValue = type === 'richtext' ? (el.innerHTML || '') : (el.textContent || '');
     if (newValue !== originalValues[field]) {
       modifications[field] = newValue;
     } else {
@@ -973,6 +986,10 @@
       '.cms-editable:hover{outline-color:color-mix(in srgb,var(--cms-accent) 50%,transparent)}' +
       '.cms-editable-focus{outline-color:var(--cms-accent)!important;outline-style:solid!important;' +
       'background-color:color-mix(in srgb,var(--cms-accent) 8%,transparent)}' +
+      '.cms-editable-richtext{min-height:1em}' +
+      '.cms-editable-richtext:focus{outline-color:var(--cms-accent)!important;outline-style:solid!important;' +
+      'outline-width:2px!important;background-color:color-mix(in srgb,var(--cms-accent) 6%,transparent);' +
+      'box-shadow:0 0 0 4px color-mix(in srgb,var(--cms-accent) 10%,transparent)}' +
       'body:has(#cms-toolbar){padding-bottom:64px}' +
       '.cms-image-overlay:hover{opacity:1!important}' +
       '.cms-editable-flash{animation:cms-flash 1.5s ease-out}' +
