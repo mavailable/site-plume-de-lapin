@@ -42,6 +42,16 @@ export interface CmsFieldSelect {
   defaultValue?: string;
 }
 
+export interface CmsFieldMultiselect {
+  type: 'multiselect';
+  label: string;
+  description?: string;
+  required?: boolean;
+  options: Array<{ label: string; value: string }>;
+  minItems?: number;
+  maxItems?: number;
+}
+
 export interface CmsFieldImage {
   type: 'image';
   label: string;
@@ -69,6 +79,7 @@ export type CmsField =
   | CmsFieldNumber
   | CmsFieldDate
   | CmsFieldSelect
+  | CmsFieldMultiselect
   | CmsFieldImage
   | CmsFieldObject
   | CmsFieldArray;
